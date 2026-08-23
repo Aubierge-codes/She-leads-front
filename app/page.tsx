@@ -20,7 +20,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 text-primary font-bold text-xl">
             <Leaf className="w-6 h-6" />
-            <span>SHE Leads</span>
+            <span>ECO GIRLS COLLECTIVE</span>
           </div>
           <nav className="hidden md:flex gap-6">
             <Link href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
@@ -51,7 +51,7 @@ export default function LandingPage() {
                 <span className="text-primary">Environmental Leaders</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Track, manage, and scale the impact of your "SHE Leads" environmental projects.
+                Track, manage, and scale the impact of your "ECO GIRLS COLLECTIVE" environmental projects.
                 Monitor waste reduction, track community events, and visualize our global footprint.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -76,7 +76,7 @@ export default function LandingPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Core Mission</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                SHE Leads is dedicated to fostering environmental stewardship through community action, education, and measurable impact.
+                ECO GIRLS COLLECTIVE is dedicated to fostering environmental stewardship through community action, education, and measurable impact.
               </p>
             </div>
             
@@ -147,7 +147,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-6 text-center text-muted-foreground">
           <div className="flex items-center justify-center gap-2 mb-4 text-primary font-bold">
             <Leaf className="w-5 h-5" />
-            <span>SHE Leads Project</span>
+            <span>ECO GIRLS COLLECTIVE Project</span>
           </div>
           <p>© 2026 Girl in Bloom Global Ambassadors. All rights reserved.</p>
         </div>

@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="flex h-16 shrink-0 items-center px-6 border-b border-border justify-between">
           <Link href="/" className="flex items-center gap-2 text-primary font-bold text-lg">
             <Leaf className="w-5 h-5" />
-            <span>SHE Leads</span>
+            <span>ECO GIRLS COLLECTIVE</span>
           </Link>
           <button className="md:hidden text-muted-foreground" onClick={() => setSidebarOpen(false)}>
             <X className="w-5 h-5" />

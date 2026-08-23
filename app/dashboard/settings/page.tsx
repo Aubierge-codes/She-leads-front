@@ -23,12 +23,12 @@ export default function SettingsPage() {
           <Card className="border-none shadow-sm bg-card">
             <CardHeader>
               <CardTitle>Project Information</CardTitle>
-              <CardDescription>Update the primary details for the SHE Leads initiative.</CardDescription>
+              <CardDescription>Update the primary details for the ECO GIRLS COLLECTIVE initiative.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="project-name">Project Name</Label>
-                <Input id="project-name" defaultValue="SHE Leads - Girl in Bloom 2026" />
+                <Input id="project-name" defaultValue="ECO GIRLS COLLECTIVE - Girl in Bloom 2026" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">

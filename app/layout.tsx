@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SHE Leads Dashboard",
+  title: "ECO GIRLS COLLECTIVE Dashboard",
   description: "Impact tracking dashboard for the Girl in Bloom Global Ambassadors Program 2026",
 };
 

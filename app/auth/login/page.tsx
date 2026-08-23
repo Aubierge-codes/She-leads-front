@@ -43,7 +43,7 @@ export default function LoginPage() {
           <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
             <Leaf className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">SHE Leads Dashboard</h1>
+          <h1 className="text-2xl font-bold tracking-tight">ECO GIRLS COLLECTIVE Dashboard</h1>
           <p className="text-muted-foreground mt-2">Sign in to your admin account</p>
         </div>
 
@@ -59,7 +59,7 @@ export default function LoginPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@sheleads.org"
+                  placeholder="admin@ecogirlscollective.org"
                   required
                   className="h-12"
                   value={email}

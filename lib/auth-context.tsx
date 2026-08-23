@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { authApi, apiErrorMessage, AuthUser, TOKEN_STORAGE_KEY } from './api';
 
-const USER_STORAGE_KEY = 'she_leads_user';
+const USER_STORAGE_KEY = 'ecogirlscollective_user';
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -59,3 +59,4 @@ export function useAuth() {
   if (!ctx) throw new Error('useAuth must be used within an AuthProvider');
   return ctx;
 }
+

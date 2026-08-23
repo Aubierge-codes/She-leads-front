@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const TOKEN_STORAGE_KEY = 'she_leads_token';
+export const TOKEN_STORAGE_KEY = 'ecogirlscollective_token';
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000',
+  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {
@@ -21,7 +22,7 @@ api.interceptors.response.use(
   (error) => {
     if (typeof window !== 'undefined' && error?.response?.status === 401) {
       window.localStorage.removeItem(TOKEN_STORAGE_KEY);
-      window.localStorage.removeItem('she_leads_user');
+      window.localStorage.removeItem('ecogirlscollective_user');
       if (!window.location.pathname.startsWith('/auth/login')) {
         window.location.href = '/auth/login';
       }
@@ -275,3 +276,4 @@ export const dashboardApi = {
   summary: () => api.get<DashboardSummary>('/dashboard/summary').then((r) => r.data),
   recentActivity: () => api.get<ActivityItem[]>('/dashboard/recent-activity').then((r) => r.data),
 };
+
