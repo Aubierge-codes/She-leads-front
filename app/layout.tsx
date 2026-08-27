@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
-import { AuthProvider } from "@/lib/auth-context";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -23,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} h-full antialiased`}>
       <body className={`${poppins.className} min-h-full flex flex-col`}>
-        <AuthProvider>{children}</AuthProvider>
+        {children}
         <Toaster richColors position="top-right" />
       </body>
     </html>

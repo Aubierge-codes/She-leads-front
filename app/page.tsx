@@ -28,9 +28,6 @@ export default function LandingPage() {
             <Link href="#timeline" className="text-muted-foreground hover:text-primary transition-colors">Timeline</Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link href="/auth/login">
-              <Button variant="outline" className="text-primary border-primary hover:bg-primary/10">Log In</Button>
-            </Link>
             <Link href="/dashboard">
               <Button>Dashboard <ArrowRight className="ml-2 w-4 h-4" /></Button>
             </Link>

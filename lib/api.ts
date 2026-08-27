@@ -1,35 +1,8 @@
 import axios from 'axios';
 
-export const TOKEN_STORAGE_KEY = 'ecogirlscollective_token';
-
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000',
-  withCredentials: true,
 });
-
-api.interceptors.request.use((config) => {
-  if (typeof window !== 'undefined') {
-    const token = window.localStorage.getItem(TOKEN_STORAGE_KEY);
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-  }
-  return config;
-});
-
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (typeof window !== 'undefined' && error?.response?.status === 401) {
-      window.localStorage.removeItem(TOKEN_STORAGE_KEY);
-      window.localStorage.removeItem('ecogirlscollective_user');
-      if (!window.location.pathname.startsWith('/auth/login')) {
-        window.location.href = '/auth/login';
-      }
-    }
-    return Promise.reject(error);
-  },
-);
 
 export function apiErrorMessage(error: unknown, fallback = 'Something went wrong'): string {
   if (axios.isAxiosError(error)) {
@@ -42,7 +15,6 @@ export function apiErrorMessage(error: unknown, fallback = 'Something went wrong
 
 // ---------- Enums ----------
 
-export type Role = 'ADMIN' | 'MANAGER';
 export type ParticipantStatus = 'ACTIVE' | 'INACTIVE' | 'GRADUATED';
 export type CleanupEventStatus = 'PLANNED' | 'ONGOING' | 'COMPLETED' | 'CANCELLED';
 export type WasteType = 'PLASTIC' | 'PAPER' | 'METAL' | 'GLASS' | 'ORGANIC' | 'OTHER';
@@ -51,13 +23,6 @@ export type MeetingFrequency = 'WEEKLY' | 'BIWEEKLY' | 'MONTHLY';
 export type ReportStatus = 'DRAFT' | 'SUBMITTED' | 'APPROVED' | 'REJECTED';
 
 // ---------- Entities ----------
-
-export interface AuthUser {
-  id: string;
-  email: string;
-  name: string;
-  role: Role;
-}
 
 export interface Community {
   id: string;
@@ -183,11 +148,6 @@ export interface ActivityItem {
 }
 
 // ---------- API modules ----------
-
-export const authApi = {
-  login: (email: string, password: string) =>
-    api.post<{ accessToken: string; user: AuthUser }>('/auth/login', { email, password }).then((r) => r.data),
-};
 
 export const communitiesApi = {
   list: () => api.get<Community[]>('/communities').then((r) => r.data),
