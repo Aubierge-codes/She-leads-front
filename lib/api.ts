@@ -21,6 +21,8 @@ export type WasteType = 'PLASTIC' | 'PAPER' | 'METAL' | 'GLASS' | 'ORGANIC' | 'O
 export type InventoryTransactionType = 'RESTOCK' | 'USAGE' | 'ADJUSTMENT';
 export type MeetingFrequency = 'WEEKLY' | 'BIWEEKLY' | 'MONTHLY';
 export type ReportStatus = 'DRAFT' | 'SUBMITTED' | 'APPROVED' | 'REJECTED';
+export type DonationFrequency = 'ONE_TIME' | 'MONTHLY';
+export type DonationStatus = 'PENDING' | 'COMPLETED' | 'FAILED' | 'REFUNDED';
 
 // ---------- Entities ----------
 
@@ -138,6 +140,7 @@ export interface DashboardSummary {
   totalWasteWeightKg: number;
   totalWasteBags: number;
   lowStockItemsCount: number;
+  donationsRaised: number;
 }
 
 export interface ActivityItem {
@@ -145,6 +148,35 @@ export interface ActivityItem {
   title: string;
   description: string;
   timestamp: string;
+}
+
+export interface Donor {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string | null;
+  createdAt: string;
+}
+
+export interface Donation {
+  id: string;
+  donorId: string;
+  amount: number;
+  currency: string;
+  frequency: DonationFrequency;
+  status: DonationStatus;
+  message?: string | null;
+  createdAt: string;
+  donor?: Donor;
+}
+
+export interface DonationStats {
+  totalRaised: number;
+  supportersCount: number;
+  pendingCount: number;
+  completedCount: number;
+  failedCount: number;
+  refundedCount: number;
 }
 
 // ---------- API modules ----------
@@ -230,10 +262,30 @@ export const analyticsApi = {
     api.get<{ status: CleanupEventStatus; count: number }[]>('/analytics/cleanup-events-by-status').then((r) => r.data),
   reportsByStatus: () =>
     api.get<{ status: ReportStatus; count: number }[]>('/analytics/reports-by-status').then((r) => r.data),
+  donationsByStatus: () =>
+    api
+      .get<{ status: DonationStatus; totalAmount: number; count: number }[]>('/analytics/donations-by-status')
+      .then((r) => r.data),
 };
 
 export const dashboardApi = {
   summary: () => api.get<DashboardSummary>('/dashboard/summary').then((r) => r.data),
   recentActivity: () => api.get<ActivityItem[]>('/dashboard/recent-activity').then((r) => r.data),
+};
+
+export const donationsApi = {
+  list: () => api.get<Donation[]>('/donations').then((r) => r.data),
+  get: (id: string) => api.get<Donation>(`/donations/${id}`).then((r) => r.data),
+  stats: () => api.get<DonationStats>('/donations/stats').then((r) => r.data),
+  create: (data: {
+    amount: number;
+    frequency: DonationFrequency;
+    donorName: string;
+    donorEmail: string;
+    donorPhone?: string;
+    message?: string;
+  }) => api.post<Donation>('/donations', data).then((r) => r.data),
+  updateStatus: (id: string, status: DonationStatus) =>
+    api.patch<Donation>(`/donations/${id}/status`, { status }).then((r) => r.data),
 };
 

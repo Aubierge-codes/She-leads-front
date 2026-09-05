@@ -13,6 +13,7 @@ import {
   Package,
   Leaf,
   BarChart,
+  HeartHandshake,
   Settings,
   Menu,
   X,
@@ -29,6 +30,7 @@ const navigation = [
   { name: 'Inventory', href: '/dashboard/inventory', icon: Package },
   { name: 'Env Clubs', href: '/dashboard/clubs', icon: Leaf },
   { name: 'Reports', href: '/dashboard/reports', icon: BarChart },
+  { name: 'Donations', href: '/dashboard/donations', icon: HeartHandshake },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
 ];
 
