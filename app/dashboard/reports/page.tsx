@@ -65,7 +65,7 @@ export default function ReportsPage() {
       {
         label: 'Reports',
         data: Object.keys(STATUS_LABELS).map((key) => statusCounts[key as ReportStatus]),
-        backgroundColor: '#2E7D32',
+        backgroundColor: '#35502E',
         borderRadius: 4,
       },
     ],

@@ -73,7 +73,7 @@ export default function DashboardHome() {
       {
         label: 'Waste Collected (kg)',
         data: wasteByType.map((w) => w.totalWeightKg),
-        backgroundColor: '#4CAF50',
+        backgroundColor: '#7C8A4C',
         borderRadius: 4,
       },
     ],

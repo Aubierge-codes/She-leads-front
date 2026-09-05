@@ -24,7 +24,7 @@ const WASTE_TYPE_LABELS: Record<string, string> = {
   OTHER: 'Other',
 };
 
-const CHART_COLORS = ['#2E7D32', '#4CAF50', '#81C784', '#A5D6A7', '#C8E6C9', '#66BB6A'];
+const CHART_COLORS = ['#35502E', '#7C8A4C', '#A98F4B', '#C9A66B', '#E4D9C3', '#8B5E34'];
 
 export default function WasteTrackingPage() {
   const [wasteByType, setWasteByType] = useState<{ type: string; totalWeightKg: number; totalBags: number }[]>([]);
