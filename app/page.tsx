@@ -109,6 +109,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col font-sans">
+      <WorldMapBackdrop className="fixed inset-0 -z-20 h-full w-full pointer-events-none" />
       {/* Header */}
       <header className="fixed top-4 md:top-6 inset-x-4 md:inset-x-6 lg:inset-x-8 z-50">
         <div className="mx-auto max-w-7xl flex items-center justify-between gap-3 rounded-full border border-border bg-card/95 backdrop-blur-md shadow-sm px-4 py-3 sm:px-5 lg:gap-4 lg:px-6 lg:py-3.5 xl:px-8 xl:py-4">
@@ -185,7 +186,6 @@ export default function LandingPage() {
       <main className="flex-1 pt-28">
         {/* Hero */}
         <section className="relative isolate overflow-hidden pb-20 md:pb-28">
-          <WorldMapBackdrop className="pointer-events-none absolute -z-20 top-1/2 right-[-15%] w-[95%] lg:w-[75%] -translate-y-1/2" />
           <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:items-center">
             <motion.div initial="initial" animate="animate" variants={fadeIn}>
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">
