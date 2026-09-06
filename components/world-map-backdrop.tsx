@@ -19,9 +19,9 @@ export function WorldMapBackdrop({ className }: WorldMapBackdropProps) {
       viewBox="0 0 1000 469"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
-      className={className}
+      className={`aspect-[1000/469] ${className ?? ''}`}
     >
-      <path d={WORLD_PATH} fill="#BFA98A" fillOpacity={0.35} />
+      <path d={WORLD_PATH} fill="#8B6F47" fillOpacity={0.9} />
     </svg>
   );
 }

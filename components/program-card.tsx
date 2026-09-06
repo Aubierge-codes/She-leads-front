@@ -17,7 +17,7 @@ export function ProgramCard({ icon: Icon, title, description, photoLabel }: Prog
           <Icon className="h-4 w-4" />
         </div>
         <div>
-          <h3 className="font-heading font-semibold text-foreground">{title}</h3>
+          <h3 className="font-heading font-bold text-foreground">{title}</h3>
           <p className="mt-1 text-sm text-muted-foreground">{description}</p>
         </div>
       </div>

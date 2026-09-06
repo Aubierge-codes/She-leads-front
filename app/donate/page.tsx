@@ -80,7 +80,7 @@ export default function DonatePage() {
       <main className="container mx-auto px-6 py-16 max-w-lg">
         <div className="mb-10">
           <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Support the Movement</span>
-          <h1 className="font-heading mt-3 text-3xl font-semibold text-foreground tracking-tight">
+          <h1 className="font-heading mt-3 text-3xl font-bold text-foreground tracking-tight">
             Your support creates opportunities for action.
           </h1>
           <p className="mt-3 text-sm text-muted-foreground">
@@ -191,7 +191,7 @@ export default function DonatePage() {
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-primary">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h2 className="font-heading text-2xl font-semibold text-foreground">
+              <h2 className="font-heading text-2xl font-bold text-foreground">
                 Thank you for supporting the movement.
               </h2>
               <div className="inline-flex flex-col items-center gap-1 rounded-lg border border-border bg-muted/60 px-6 py-4">

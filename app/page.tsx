@@ -184,7 +184,7 @@ export default function LandingPage() {
 
       <main className="flex-1 pt-28">
         {/* Hero */}
-        <section className="relative overflow-hidden pb-20 md:pb-28">
+        <section className="relative isolate overflow-hidden pb-20 md:pb-28">
           <WorldMapBackdrop className="pointer-events-none absolute -z-20 top-1/2 right-[-15%] w-[95%] lg:w-[75%] -translate-y-1/2" />
           <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:items-center">
             <motion.div initial="initial" animate="animate" variants={fadeIn}>
