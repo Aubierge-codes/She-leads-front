@@ -105,11 +105,11 @@ export default function LandingPage() {
       {/* Header */}
       <header className="fixed top-4 md:top-6 inset-x-4 md:inset-x-8 z-50">
         <div className="mx-auto max-w-7xl flex items-center justify-between gap-3 rounded-full border border-border bg-card/95 backdrop-blur-md shadow-sm px-4 py-3 sm:px-5 md:gap-4 md:px-8 md:py-4">
-          <div className="flex items-center gap-2 md:gap-2.5 text-foreground font-bold text-base sm:text-lg md:text-xl font-heading whitespace-nowrap">
+          <div className="flex items-center gap-2 md:gap-2.5 text-foreground font-bold text-base sm:text-lg md:text-xl font-heading min-w-0">
             <span className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full bg-primary/10 text-primary shrink-0">
               <Leaf className="w-4 h-4 md:w-5 md:h-5" />
             </span>
-            <span className="truncate">ECO GIRLS COLLECTIVE</span>
+            <span className="truncate max-[380px]:hidden">ECO GIRLS COLLECTIVE</span>
           </div>
           <nav className="hidden md:flex items-center gap-8 flex-1 justify-center">
             {NAV_LINKS.map((link) => (
@@ -123,7 +123,7 @@ export default function LandingPage() {
             ))}
           </nav>
           <div className="flex items-center gap-2 md:gap-3 shrink-0">
-            <Link href="/dashboard" className="hidden sm:block">
+            <Link href="/dashboard" className="hidden md:block">
               <Button variant="outline" className="rounded-full">
                 Dashboard
               </Button>
@@ -136,7 +136,7 @@ export default function LandingPage() {
               onClick={() => setMobileMenuOpen((open) => !open)}
               aria-label="Toggle menu"
               aria-expanded={mobileMenuOpen}
-              className="md:hidden flex items-center justify-center w-9 h-9 rounded-full text-foreground hover:bg-muted transition-colors"
+              className="md:hidden flex items-center justify-center w-9 h-9 rounded-full text-foreground hover:bg-muted transition-colors shrink-0"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -162,10 +162,11 @@ export default function LandingPage() {
                   {link.label}
                 </Link>
               ))}
+              <div className="my-1 border-t border-border" />
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="sm:hidden rounded-lg px-3 py-2.5 text-base font-semibold text-foreground hover:bg-muted transition-colors"
+                className="rounded-lg px-3 py-2.5 text-base font-semibold text-foreground hover:bg-muted transition-colors"
               >
                 Dashboard
               </Link>
