@@ -101,32 +101,32 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col font-sans">
       {/* Header */}
       <header className="fixed top-4 md:top-6 inset-x-4 md:inset-x-8 z-50">
-        <div className="mx-auto max-w-6xl flex items-center justify-between gap-4 rounded-full border border-border bg-card/95 backdrop-blur-md shadow-sm px-4 py-2.5 md:px-6">
-          <div className="flex items-center gap-2 text-primary font-bold text-base font-heading whitespace-nowrap">
-            <Leaf className="w-5 h-5" />
+        <div className="mx-auto max-w-7xl flex items-center justify-between gap-4 rounded-full border border-border bg-card/95 backdrop-blur-md shadow-sm px-5 py-3 md:px-8 md:py-4">
+          <div className="flex items-center gap-2.5 text-foreground font-bold text-xl font-heading whitespace-nowrap">
+            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary">
+              <Leaf className="w-5 h-5" />
+            </span>
             <span>ECO GIRLS COLLECTIVE</span>
           </div>
-          <nav className="hidden md:flex items-center gap-7 flex-1 justify-center">
+          <nav className="hidden md:flex items-center gap-8 flex-1 justify-center">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-base font-semibold text-foreground hover:text-primary transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-3 shrink-0">
             <Link href="/dashboard" className="hidden sm:block">
-              <Button variant="outline" size="sm" className="rounded-full">
+              <Button variant="outline" className="rounded-full">
                 Dashboard
               </Button>
             </Link>
             <Link href="/donate">
-              <Button size="sm" className="rounded-full">
-                Support Us
-              </Button>
+              <Button className="rounded-full">Support Us</Button>
             </Link>
           </div>
         </div>
