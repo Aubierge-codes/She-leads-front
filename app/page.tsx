@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlaceholderImage } from '@/components/placeholder-image';
+import { AfricaPhoto } from '@/components/africa-photo';
 import { StatTile } from '@/components/stat-tile';
 import { ProgramCard } from '@/components/program-card';
 import { StoryCard } from '@/components/story-card';
 import { ReachSection } from '@/components/reach-section';
 import { ImpactCharts } from '@/components/impact-charts';
+import { FloatingElement } from '@/components/floating-element';
 import {
   Leaf,
   Globe,
@@ -29,6 +30,10 @@ import {
   UserPlus,
   Menu,
   X,
+  Droplet,
+  Sun,
+  Sparkles,
+  Sprout,
 } from 'lucide-react';
 import { dashboardApi, type DashboardSummary } from '@/lib/api';
 
@@ -213,15 +218,11 @@ export default function LandingPage() {
                 className="absolute -z-10 -top-2 -right-2 w-[92%] h-[92%] bg-secondary/25 rounded-[42%_58%_65%_35%/45%_40%_60%_55%]"
                 aria-hidden="true"
               />
-              <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl">
-                <Image
-                  src="/images/hero-girls-circle.jpg"
-                  alt="A circle of Eco Girls Collective participants smiling together"
-                  fill
-                  priority
-                  className="object-cover"
-                />
-              </div>
+              <AfricaPhoto
+                src="/images/hero-girls-circle.jpg"
+                alt="A circle of Eco Girls Collective participants smiling together"
+                className="relative w-full"
+              />
 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -254,6 +255,40 @@ export default function LandingPage() {
                   <p className="text-xs text-muted-foreground whitespace-nowrap">Waste collected</p>
                 </div>
               </motion.div>
+
+              <FloatingElement
+                delay={0}
+                duration={5}
+                drift={10}
+                className="hidden sm:flex absolute -top-3 right-10 w-10 h-10 rounded-full bg-accent items-center justify-center text-primary shadow-sm"
+              >
+                <Leaf className="w-5 h-5" />
+              </FloatingElement>
+              <FloatingElement
+                delay={1.2}
+                duration={6.5}
+                drift={8}
+                className="hidden sm:flex absolute top-1/2 -left-4 w-8 h-8 rounded-full bg-card border border-border items-center justify-center text-secondary shadow-sm"
+              >
+                <Droplet className="w-4 h-4" />
+              </FloatingElement>
+              <FloatingElement
+                delay={0.6}
+                duration={4.5}
+                drift={6}
+                rotate={12}
+                className="hidden sm:flex absolute top-10 left-1/2 w-7 h-7 rounded-full bg-primary/10 items-center justify-center text-primary/80"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+              </FloatingElement>
+              <FloatingElement
+                delay={1.8}
+                duration={5.5}
+                drift={9}
+                className="hidden sm:flex absolute bottom-24 -right-3 w-8 h-8 rounded-full bg-secondary/15 items-center justify-center text-secondary shadow-sm"
+              >
+                <Sprout className="w-4 h-4" />
+              </FloatingElement>
             </div>
           </div>
         </section>
