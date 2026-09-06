@@ -134,13 +134,13 @@ export default function LandingPage() {
 
       <main className="flex-1 pt-28">
         {/* Hero */}
-        <section className="relative overflow-hidden py-20 md:py-28">
+        <section className="relative overflow-hidden pb-20 md:pb-28">
           <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:items-center">
             <motion.div initial="initial" animate="animate" variants={fadeIn}>
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">
                 Girl in Bloom Global Ambassadors 2026
               </span>
-              <h1 className="font-heading mt-4 text-5xl md:text-7xl font-extrabold text-foreground leading-[1.02] tracking-tight">
+              <h1 className="font-heading mt-4 text-4xl md:text-6xl font-extrabold text-foreground leading-[1.02] tracking-tight">
                 Girls Leading.
                 <br />
                 Communities Growing.
