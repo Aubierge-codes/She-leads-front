@@ -100,29 +100,28 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col font-sans">
       {/* Header */}
-      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
-        <div className="flex items-center gap-2 rounded-full border border-border bg-card/90 backdrop-blur-md shadow-sm pl-4 pr-2 py-2 md:gap-6 md:pl-5">
-          <div className="flex items-center gap-2 text-primary font-bold text-sm font-heading whitespace-nowrap">
-            <Leaf className="w-4 h-4" />
-            <span className="hidden sm:inline">ECO GIRLS COLLECTIVE</span>
+      <header className="fixed top-4 md:top-6 inset-x-4 md:inset-x-8 z-50">
+        <div className="mx-auto max-w-6xl flex items-center justify-between gap-4 rounded-full border border-border bg-card/95 backdrop-blur-md shadow-sm px-4 py-2.5 md:px-6">
+          <div className="flex items-center gap-2 text-primary font-bold text-base font-heading whitespace-nowrap">
+            <Leaf className="w-5 h-5" />
+            <span>ECO GIRLS COLLECTIVE</span>
           </div>
-          <nav className="hidden md:flex gap-5">
+          <nav className="hidden md:flex items-center gap-7 flex-1 justify-center">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-1">
-            <Link
-              href="/dashboard"
-              className="hidden sm:block rounded-full px-3 py-1.5 text-sm text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
-            >
-              Dashboard
+          <div className="flex items-center gap-2 shrink-0">
+            <Link href="/dashboard" className="hidden sm:block">
+              <Button variant="outline" size="sm" className="rounded-full">
+                Dashboard
+              </Button>
             </Link>
             <Link href="/donate">
               <Button size="sm" className="rounded-full">
@@ -133,7 +132,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <main className="flex-1 pt-24">
+      <main className="flex-1 pt-28">
         {/* Hero */}
         <section className="relative overflow-hidden py-20 md:py-28">
           <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -141,7 +140,7 @@ export default function LandingPage() {
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">
                 Girl in Bloom Global Ambassadors 2026
               </span>
-              <h1 className="font-heading mt-4 text-4xl md:text-6xl font-semibold text-foreground leading-[1.05] tracking-tight">
+              <h1 className="font-heading mt-4 text-5xl md:text-7xl font-extrabold text-foreground leading-[1.02] tracking-tight">
                 Girls Leading.
                 <br />
                 Communities Growing.
@@ -195,7 +194,7 @@ export default function LandingPage() {
               <PlaceholderImage label="Add photo: girls in discussion" aspect="wide" variant="leaf" />
               <div>
                 <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Our Mission</span>
-                <h2 className="font-heading mt-3 text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+                <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                   When girls lead, communities move.
                 </h2>
                 <p className="mt-4 text-muted-foreground max-w-xl">
@@ -217,7 +216,7 @@ export default function LandingPage() {
                       <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                         <Recycle className="w-6 h-6" />
                       </div>
-                      <h3 className="text-lg font-semibold mb-2 text-foreground font-heading">Waste Reduction</h3>
+                      <h3 className="text-lg font-bold mb-2 text-foreground font-heading">Waste Reduction</h3>
                       <p className="text-muted-foreground text-sm">
                         Organizing cleanup events and implementing recycling programs in schools and communities.
                       </p>
@@ -231,7 +230,7 @@ export default function LandingPage() {
                       <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6 text-secondary">
                         <Users className="w-6 h-6" />
                       </div>
-                      <h3 className="text-lg font-semibold mb-2 text-foreground font-heading">Community Engagement</h3>
+                      <h3 className="text-lg font-bold mb-2 text-foreground font-heading">Community Engagement</h3>
                       <p className="text-muted-foreground text-sm">
                         Empowering girls to lead environmental clubs, educate peers, and drive sustainable change.
                       </p>
@@ -245,7 +244,7 @@ export default function LandingPage() {
                       <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                         <Globe className="w-6 h-6" />
                       </div>
-                      <h3 className="text-lg font-semibold mb-2 text-foreground font-heading">Growing Impact</h3>
+                      <h3 className="text-lg font-bold mb-2 text-foreground font-heading">Growing Impact</h3>
                       <p className="text-muted-foreground text-sm">
                         Tracking waste diverted from landfills and expanding our footprint across schools.
                       </p>
@@ -262,7 +261,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">What We Do</span>
-              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 Six ways girls are taking the lead.
               </h2>
             </div>
@@ -279,7 +278,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Our Impact</span>
-              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 The work behind the numbers.
               </h2>
             </div>
@@ -292,7 +291,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Stories</span>
-              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 Meet the girls behind the movement.
               </h2>
             </div>
@@ -321,7 +320,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-10">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Where We Work</span>
-              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 Our growing reach.
               </h2>
             </div>
@@ -336,7 +335,7 @@ export default function LandingPage() {
               <span className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 font-medium">
                 Support the Movement
               </span>
-              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
+              <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold tracking-tight">
                 Help girls turn ideas into action.
               </h2>
               <p className="mt-4 text-primary-foreground/80 max-w-xl">
@@ -349,7 +348,7 @@ export default function LandingPage() {
               {WAYS_TO_PARTICIPATE.map((way) => (
                 <div key={way.title}>
                   <way.icon className="w-6 h-6 mb-3 text-primary-foreground/90" />
-                  <h3 className="font-heading font-semibold mb-1">{way.title}</h3>
+                  <h3 className="font-heading font-bold mb-1">{way.title}</h3>
                   <p className="text-sm text-primary-foreground/70">{way.description}</p>
                 </div>
               ))}
