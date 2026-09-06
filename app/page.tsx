@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlaceholderImage } from '@/components/placeholder-image';
 import { AfricaPhoto } from '@/components/africa-photo';
+import { WorldMapBackdrop } from '@/components/world-map-backdrop';
 import { StatTile } from '@/components/stat-tile';
 import { ProgramCard } from '@/components/program-card';
 import { StoryCard } from '@/components/story-card';
@@ -184,12 +185,13 @@ export default function LandingPage() {
       <main className="flex-1 pt-28">
         {/* Hero */}
         <section className="relative overflow-hidden pb-20 md:pb-28">
+          <WorldMapBackdrop className="pointer-events-none absolute -z-20 top-1/2 right-[-15%] w-[95%] lg:w-[75%] -translate-y-1/2" />
           <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:items-center">
             <motion.div initial="initial" animate="animate" variants={fadeIn}>
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">
                 Girl in Bloom Global Ambassadors 2026
               </span>
-              <h1 className="font-heading mt-4 text-4xl md:text-6xl font-extrabold text-foreground leading-[1.02] tracking-tight">
+              <h1 className="font-heading mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-[1.02] tracking-tight">
                 Girls Leading.
                 <br />
                 Communities Growing.
