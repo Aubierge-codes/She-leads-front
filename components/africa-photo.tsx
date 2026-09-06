@@ -9,20 +9,23 @@ const AFRICA_PATH =
 
 const VIEWBOX_W = 68.76;
 const VIEWBOX_H = 72.17;
-const SRC_ASPECT = 736 / 981;
 
 interface AfricaPhotoProps {
   src: string;
   alt: string;
   className?: string;
+  /** Actual pixel width/height of the source photo — required to crop it correctly. */
+  srcWidth: number;
+  srcHeight: number;
   /** >1 crops in tighter on the source photo; use to reduce empty space landing in the shape's narrow areas. */
   zoom?: number;
 }
 
-export function AfricaPhoto({ src, alt, className, zoom = 1.15 }: AfricaPhotoProps) {
-  const coverScale = Math.max(VIEWBOX_W / (SRC_ASPECT * VIEWBOX_H), 1) * zoom;
+export function AfricaPhoto({ src, alt, className, srcWidth, srcHeight, zoom = 1.15 }: AfricaPhotoProps) {
+  const srcAspect = srcWidth / srcHeight;
+  const coverScale = Math.max(VIEWBOX_W / (srcAspect * VIEWBOX_H), 1) * zoom;
   const imgH = VIEWBOX_H * coverScale;
-  const imgW = imgH * SRC_ASPECT;
+  const imgW = imgH * srcAspect;
   const x = (VIEWBOX_W - imgW) / 2;
   const y = (VIEWBOX_H - imgH) / 2;
 

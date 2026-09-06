@@ -213,14 +213,16 @@ export default function LandingPage() {
                 </Link>
               </div>
             </motion.div>
-            <div className="relative w-full lg:justify-self-end lg:max-w-md pt-6 pb-8 px-6">
+            <div className="relative w-full lg:justify-self-end lg:max-w-lg pt-6 pb-8 px-6">
               <div
                 className="absolute -z-10 -top-2 -right-2 w-[92%] h-[92%] bg-secondary/25 rounded-[42%_58%_65%_35%/45%_40%_60%_55%]"
                 aria-hidden="true"
               />
               <AfricaPhoto
                 src="/images/hero-girls-circle.jpg"
-                alt="A circle of Eco Girls Collective participants smiling together"
+                alt="Hands planting a seedling in the soil"
+                srcWidth={735}
+                srcHeight={490}
                 className="relative w-full"
               />
 
