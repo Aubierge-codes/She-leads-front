@@ -208,14 +208,52 @@ export default function LandingPage() {
                 </Link>
               </div>
             </motion.div>
-            <div className="relative aspect-3/4 w-full overflow-hidden rounded-lg lg:justify-self-end lg:max-w-md">
-              <Image
-                src="/images/hero-girls-circle.jpg"
-                alt="A circle of Eco Girls Collective participants smiling together"
-                fill
-                priority
-                className="object-cover"
+            <div className="relative w-full lg:justify-self-end lg:max-w-md pt-6 pb-8 px-6">
+              <div
+                className="absolute -z-10 -top-2 -right-2 w-[92%] h-[92%] bg-secondary/25 rounded-[42%_58%_65%_35%/45%_40%_60%_55%]"
+                aria-hidden="true"
               />
+              <div className="relative aspect-3/4 w-full overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/hero-girls-circle.jpg"
+                  alt="A circle of Eco Girls Collective participants smiling together"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="absolute -left-2 top-2 sm:-left-6 sm:top-8 flex items-center gap-3 rounded-xl border border-border bg-card shadow-md px-4 py-3"
+              >
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary shrink-0">
+                  <Users className="w-4 h-4" />
+                </span>
+                <div className="leading-tight">
+                  <p className="font-heading font-bold text-foreground">{summary?.participantsCount ?? '—'}+</p>
+                  <p className="text-xs text-muted-foreground whitespace-nowrap">Girls engaged</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="absolute -right-2 bottom-0 sm:-right-6 sm:bottom-6 flex items-center gap-3 rounded-xl border border-border bg-card shadow-md px-4 py-3"
+              >
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-secondary/15 text-secondary shrink-0">
+                  <Recycle className="w-4 h-4" />
+                </span>
+                <div className="leading-tight">
+                  <p className="font-heading font-bold text-foreground">
+                    {summary ? summary.totalWasteWeightKg.toLocaleString() : '—'} kg
+                  </p>
+                  <p className="text-xs text-muted-foreground whitespace-nowrap">Waste collected</p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
