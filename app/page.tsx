@@ -9,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PlaceholderImage } from '@/components/placeholder-image';
 import { AfricaPhoto } from '@/components/africa-photo';
 import { WorldMapBackdrop } from '@/components/world-map-backdrop';
+import { cn } from '@/lib/utils';
 import { StatTile } from '@/components/stat-tile';
 import { ProgramCard } from '@/components/program-card';
 import { StoryCard } from '@/components/story-card';
@@ -96,9 +97,17 @@ const WAYS_TO_PARTICIPATE = [
 export default function LandingPage() {
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     dashboardApi.summary().then(setSummary).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const fadeIn = {
@@ -111,7 +120,12 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col font-sans">
       {/* Header */}
       <header className="fixed top-4 md:top-6 inset-x-4 md:inset-x-6 lg:inset-x-8 z-50">
-        <div className="mx-auto max-w-7xl flex items-center justify-between gap-3 rounded-full border border-border bg-card/95 backdrop-blur-md shadow-sm px-4 py-3 sm:px-5 lg:gap-4 lg:px-6 lg:py-3.5 xl:px-8 xl:py-4">
+        <div
+          className={cn(
+            'mx-auto max-w-7xl flex items-center justify-between gap-3 rounded-full border border-border bg-card/95 px-4 py-3 transition-[box-shadow,backdrop-filter] duration-300 sm:px-5 lg:gap-4 lg:px-6 lg:py-3.5 xl:px-8 xl:py-4',
+            scrolled ? 'shadow-xs backdrop-blur-sm' : 'shadow-none backdrop-blur-none',
+          )}
+        >
           <div className="flex items-center gap-2 lg:gap-2.5 text-foreground font-bold text-base sm:text-lg xl:text-xl font-heading min-w-0">
             <span className="flex items-center justify-center w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-primary/10 text-primary shrink-0">
               <Leaf className="w-4 h-4 lg:w-5 lg:h-5" />
