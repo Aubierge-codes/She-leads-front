@@ -270,7 +270,7 @@ export default function LandingPage() {
         </section>
 
         {/* Impact strip */}
-        <section id="impact-strip" className="border-y border-border bg-muted/40 py-4">
+        <section id="impact-strip" className="border-y border-border bg-muted/40 py-2.5">
           <div className="container mx-auto px-6">
             <StatSlideshow
               stats={[
