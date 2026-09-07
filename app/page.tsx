@@ -22,6 +22,9 @@ import {
   Users,
   ArrowRight,
   Recycle,
+  GraduationCap,
+  Map,
+  Calendar,
   BookOpen,
   Target,
   Trash2,
@@ -274,13 +277,15 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <StatSlideshow
               stats={[
-                { value: `${summary?.participantsCount ?? '—'}`, label: 'Girls engaged' },
-                { value: `${summary?.schoolsCount ?? '—'}`, label: 'Schools' },
-                { value: `${summary?.communitiesCount ?? '—'}`, label: 'Communities' },
-                { value: `${summary?.cleanupEventsCount ?? '—'}`, label: 'Cleanup events' },
+                { value: '80+', label: 'Girls engaged', icon: Users, color: '#35502E' },
+                { value: '3+', label: 'Schools', icon: GraduationCap, color: '#7C8A4C' },
+                { value: '2+', label: 'Communities', icon: Map, color: '#A98F4B' },
+                { value: '2', label: 'Cleanup events', icon: Calendar, color: '#C9A66B' },
                 {
                   value: summary ? `${summary.totalWasteWeightKg.toLocaleString()} kg` : '—',
                   label: 'Waste collected',
+                  icon: Recycle,
+                  color: '#8B5E34',
                 },
               ]}
             />
