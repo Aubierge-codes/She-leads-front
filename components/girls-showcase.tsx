@@ -10,6 +10,11 @@ import { girlsData, CATEGORY_LABELS, type GirlCategory, type GirlStory } from '@
 
 const CATEGORIES: GirlCategory[] = ['school', 'community', 'environment'];
 const AUTOPLAY_MS = 6000;
+const CATEGORY_VARIANTS: Record<GirlCategory, 'camera' | 'users' | 'leaf'> = {
+  school: 'camera',
+  community: 'users',
+  environment: 'leaf',
+};
 
 interface GirlsShowcaseProps {
   girls?: GirlStory[];
@@ -88,7 +93,7 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
     <section
       id="girls-in-action"
       ref={sectionRef}
-      className="relative overflow-hidden py-24"
+      className="relative overflow-hidden py-16"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -124,9 +129,9 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="container mx-auto px-6"
+        className="container mx-auto max-w-4xl px-6"
       >
-        <div className="max-w-2xl mb-10">
+        <div className="max-w-2xl mb-8">
           <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Girls in Action</span>
           <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
             80 girls. Different communities. One movement.
@@ -176,7 +181,16 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.45, ease: 'easeInOut' }}
               >
-                <PlaceholderImage label={slide.photoLabel} aspect="video" variant="users" className="rounded-2xl" />
+                <div className="relative">
+                  <PlaceholderImage
+                    label={slide.photoLabel}
+                    variant={CATEGORY_VARIANTS[category]}
+                    className="rounded-2xl h-52 md:h-60"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 rounded-b-2xl bg-linear-to-t from-black/55 to-transparent px-5 py-4">
+                    <p className="font-heading text-lg font-bold text-white">{slide.title}</p>
+                  </div>
+                </div>
               </motion.div>
             </AnimatePresence>
 
