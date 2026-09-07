@@ -182,7 +182,7 @@ export default function LandingPage() {
         </AnimatePresence>
       </header>
 
-      <main className="flex-1 pt-28">
+      <main className="flex-1 pt-32">
         {/* Hero */}
         <section className="relative isolate overflow-hidden pb-20 md:pb-28">
           <WorldMapBackdrop className="pointer-events-none absolute -z-20 top-1/2 left-1/2 w-[160%] sm:w-[130%] -translate-x-1/2 -translate-y-1/2" />
@@ -260,7 +260,7 @@ export default function LandingPage() {
                 delay={0}
                 duration={5}
                 drift={10}
-                className="hidden sm:flex absolute -top-3 right-10 w-10 h-10 rounded-full bg-accent items-center justify-center text-primary shadow-sm"
+                className="hidden sm:flex absolute top-4 right-10 w-10 h-10 rounded-full bg-accent items-center justify-center text-primary shadow-sm"
               >
                 <Leaf className="w-5 h-5" />
               </FloatingElement>
