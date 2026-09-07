@@ -17,9 +17,9 @@ export function WorldMapBackdrop({ className }: WorldMapBackdropProps) {
   return (
     <svg
       viewBox="0 0 1000 469"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="xMidYMid meet"
       aria-hidden="true"
-      className={`aspect-[1000/469] ${className ?? ''}`}
+      className={className}
     >
       <path d={WORLD_PATH} fill="#A3906E" fillOpacity={0.4} />
     </svg>
