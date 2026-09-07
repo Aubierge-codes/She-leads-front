@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { PlaceholderImage } from '@/components/placeholder-image';
 import { AfricaPhoto } from '@/components/africa-photo';
 import { WorldMapBackdrop } from '@/components/world-map-backdrop';
 import { GirlsShowcase } from '@/components/girls-showcase';
@@ -296,7 +296,14 @@ export default function LandingPage() {
         <section id="mission" className="py-24">
           <div className="container mx-auto px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-              <PlaceholderImage label="Add photo: girls in discussion" aspect="wide" variant="leaf" />
+              <div className="relative aspect-21/9 w-full overflow-hidden rounded-2xl bg-white">
+                <Image
+                  src="/images/mission-cleanup-illustration.jpg"
+                  alt="Illustration of children cleaning up litter by a stream"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <div>
                 <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Our Mission</span>
                 <h2 className="font-heading mt-3 text-3xl md:text-4xl font-bold text-foreground tracking-tight">
