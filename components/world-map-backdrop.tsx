@@ -21,7 +21,7 @@ export function WorldMapBackdrop({ className }: WorldMapBackdropProps) {
       aria-hidden="true"
       className={`aspect-[1000/469] ${className ?? ''}`}
     >
-      <path d={WORLD_PATH} fill="#A3906E" fillOpacity={0.55} />
+      <path d={WORLD_PATH} fill="#A3906E" fillOpacity={0.4} />
     </svg>
   );
 }
