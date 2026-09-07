@@ -9,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PlaceholderImage } from '@/components/placeholder-image';
 import { AfricaPhoto } from '@/components/africa-photo';
 import { WorldMapBackdrop } from '@/components/world-map-backdrop';
+import { GirlsShowcase } from '@/components/girls-showcase';
 import { cn } from '@/lib/utils';
 import { StatTile } from '@/components/stat-tile';
 import { ProgramCard } from '@/components/program-card';
@@ -367,6 +368,8 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        <GirlsShowcase />
 
         {/* Our Impact */}
         <section id="impact" className="py-24">
