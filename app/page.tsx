@@ -191,11 +191,11 @@ export default function LandingPage() {
         </AnimatePresence>
       </header>
 
-      <main className="flex-1 pt-32">
+      <main className="flex-1">
         {/* Hero */}
         <section className="relative isolate overflow-hidden pb-20 md:pb-28">
           <WorldMapBackdrop className="pointer-events-none absolute -z-20 top-1/2 left-1/2 w-[160%] sm:w-[130%] -translate-x-1/2 -translate-y-1/2" />
-          <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="container mx-auto px-6 pt-32 grid gap-12 lg:grid-cols-2 lg:items-center">
             <motion.div initial="initial" animate="animate" variants={fadeIn}>
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">
                 Girl in Bloom Global Ambassadors 2026
@@ -224,7 +224,7 @@ export default function LandingPage() {
                 </Link>
               </div>
             </motion.div>
-            <div className="relative w-full lg:justify-self-end lg:max-w-lg pt-6 pb-8 px-6">
+            <div className="relative w-full max-w-55 sm:max-w-xs lg:justify-self-end pt-6 pb-8 px-6">
               <AfricaPhoto
                 src="/images/hero-girls-circle.jpg"
                 alt="Hands planting a seedling in the soil"
