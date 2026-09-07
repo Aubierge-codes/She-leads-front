@@ -224,7 +224,7 @@ export default function LandingPage() {
                 </Link>
               </div>
             </motion.div>
-            <div className="relative w-full max-w-55 sm:max-w-xs lg:justify-self-end pt-6 pb-8 px-6">
+            <div className="relative w-full max-w-55 sm:max-w-xs lg:justify-self-center lg:-translate-x-10 xl:-translate-x-16 pt-6 pb-8 px-6">
               <AfricaPhoto
                 src="/images/hero-girls-circle.jpg"
                 alt="Hands planting a seedling in the soil"
