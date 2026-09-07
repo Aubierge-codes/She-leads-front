@@ -11,7 +11,7 @@ import { AfricaPhoto } from '@/components/africa-photo';
 import { WorldMapBackdrop } from '@/components/world-map-backdrop';
 import { GirlsShowcase } from '@/components/girls-showcase';
 import { cn } from '@/lib/utils';
-import { StatTile } from '@/components/stat-tile';
+import { StatSlideshow } from '@/components/stat-slideshow';
 import { ProgramCard } from '@/components/program-card';
 import { StoryCard } from '@/components/story-card';
 import { ReachSection } from '@/components/reach-section';
@@ -270,15 +270,19 @@ export default function LandingPage() {
         </section>
 
         {/* Impact strip */}
-        <section id="impact-strip" className="border-y border-border bg-muted/40 py-10">
-          <div className="container mx-auto px-6 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-            <StatTile value={`${summary?.participantsCount ?? '—'}`} label="Girls engaged" />
-            <StatTile value={`${summary?.schoolsCount ?? '—'}`} label="Schools" />
-            <StatTile value={`${summary?.communitiesCount ?? '—'}`} label="Communities" />
-            <StatTile value={`${summary?.cleanupEventsCount ?? '—'}`} label="Cleanup events" />
-            <StatTile
-              value={summary ? `${summary.totalWasteWeightKg.toLocaleString()} kg` : '—'}
-              label="Waste collected"
+        <section id="impact-strip" className="border-y border-border bg-muted/40 py-4">
+          <div className="container mx-auto px-6">
+            <StatSlideshow
+              stats={[
+                { value: `${summary?.participantsCount ?? '—'}`, label: 'Girls engaged' },
+                { value: `${summary?.schoolsCount ?? '—'}`, label: 'Schools' },
+                { value: `${summary?.communitiesCount ?? '—'}`, label: 'Communities' },
+                { value: `${summary?.cleanupEventsCount ?? '—'}`, label: 'Cleanup events' },
+                {
+                  value: summary ? `${summary.totalWasteWeightKg.toLocaleString()} kg` : '—',
+                  label: 'Waste collected',
+                },
+              ]}
             />
           </div>
         </section>
