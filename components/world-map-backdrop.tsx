@@ -17,7 +17,7 @@ export function WorldMapBackdrop({ className }: WorldMapBackdropProps) {
   return (
     <svg
       viewBox="0 0 1000 469"
-      preserveAspectRatio="xMidYMid meet"
+      preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
       className={className}
     >
