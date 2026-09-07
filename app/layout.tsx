@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700', '800'],
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-geist",
 });
 
 export const metadata: Metadata = {
@@ -20,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
-      <body className={`${poppins.className} min-h-full flex flex-col`}>
+    <html lang="en" className={`${geist.variable} h-full antialiased`}>
+      <body className={`${geist.className} min-h-full flex flex-col`}>
         {children}
         <Toaster richColors position="top-right" />
       </body>
