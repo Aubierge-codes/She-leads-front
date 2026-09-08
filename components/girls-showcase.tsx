@@ -93,7 +93,7 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
     <section
       id="girls-in-action"
       ref={sectionRef}
-      className="relative overflow-hidden py-16"
+      className="relative overflow-hidden py-12"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -129,7 +129,7 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="container mx-auto max-w-4xl px-6"
+        className="container mx-auto max-w-3xl px-6"
       >
         <div className="max-w-2xl mb-8">
           <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Girls in Action</span>
@@ -176,16 +176,16 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`${category}-${slide.id}`}
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.45, ease: 'easeInOut' }}
+                initial={{ opacity: 0, x: 40, scale: 0.98 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -40, scale: 0.98 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
               >
                 <div className="relative">
                   <PlaceholderImage
                     label={slide.photoLabel}
                     variant={CATEGORY_VARIANTS[category]}
-                    className="rounded-2xl h-52 md:h-60"
+                    className="rounded-2xl h-36 md:h-44"
                   />
                   <div className="absolute inset-x-0 bottom-0 rounded-b-2xl bg-linear-to-t from-black/55 to-transparent px-5 py-4">
                     <p className="font-heading text-lg font-bold text-white">{slide.title}</p>
