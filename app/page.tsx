@@ -15,6 +15,7 @@ import { StatSlideshow } from '@/components/stat-slideshow';
 import { ProgramCard } from '@/components/program-card';
 import { StoryCard } from '@/components/story-card';
 import { ReachSection } from '@/components/reach-section';
+import { FaqAccordion } from '@/components/faq-accordion';
 import { ImpactCharts } from '@/components/impact-charts';
 import {
   Leaf,
@@ -504,6 +505,43 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-24"
+        >
+          <div className="container mx-auto max-w-2xl px-6">
+            <div className="mb-10 text-center">
+              <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">FAQ</span>
+              <h2 className="font-heading mt-3 text-3xl font-bold text-foreground tracking-tight">
+                Common questions about joining the collective.
+              </h2>
+            </div>
+            <FaqAccordion
+              items={[
+                {
+                  question: 'How does a secondary school start an Eco Girls chapter?',
+                  answer:
+                    'Reach out through the Get Involved section below — our team works with school staff and student leaders to set up an environmental club and connect it with the wider network.',
+                },
+                {
+                  question: 'Where do collected materials go after cleanups?',
+                  answer:
+                    'Materials are sorted for recycling or safe disposal through local waste-management partners, and tracked in our inventory so we can report on real environmental impact.',
+                },
+                {
+                  question: 'How can corporate partners or NGOs get involved?',
+                  answer:
+                    'Organizations can partner on funding, supplies, or joint programs — see the Partner option in Get Involved, or reach out directly and our team will follow up.',
+                },
+              ]}
+            />
+          </div>
+        </motion.section>
       </main>
 
       {/* Footer */}
