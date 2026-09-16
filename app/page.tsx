@@ -127,8 +127,8 @@ export default function LandingPage() {
           )}
         >
           <div className="flex items-center gap-2 lg:gap-2.5 text-foreground font-bold text-base sm:text-lg xl:text-xl font-heading min-w-0">
-            <span className="flex items-center justify-center w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-primary/10 text-primary shrink-0">
-              <Leaf className="w-4 h-4 lg:w-5 lg:h-5" />
+            <span className="relative w-8 h-8 lg:w-9 lg:h-9 shrink-0">
+              <Image src="/images/eco-girls-logo-icon.png" alt="Eco Girls Collective logo" fill className="object-contain" />
             </span>
             <span className="truncate max-[380px]:hidden">ECO GIRLS COLLECTIVE</span>
           </div>

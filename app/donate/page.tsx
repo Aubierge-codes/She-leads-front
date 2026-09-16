@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { toast } from 'sonner';
-import { ArrowLeft, CheckCircle2, Leaf, Loader2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -68,7 +69,9 @@ export default function DonatePage() {
       <header className="border-b border-border">
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-primary font-bold font-heading">
-            <Leaf className="w-5 h-5" />
+            <span className="relative w-5 h-5 shrink-0">
+              <Image src="/images/eco-girls-logo-icon.png" alt="Eco Girls Collective logo" fill className="object-contain" />
+            </span>
             <span>ECO GIRLS COLLECTIVE</span>
           </Link>
           <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">

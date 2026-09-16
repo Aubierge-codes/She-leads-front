@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -55,7 +56,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-card border-r border-border transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex h-16 shrink-0 items-center px-6 border-b border-border justify-between">
           <Link href="/" className="flex items-center gap-2 text-primary font-bold text-lg">
-            <Leaf className="w-5 h-5" />
+            <span className="relative w-5 h-5 shrink-0">
+              <Image src="/images/eco-girls-logo-icon.png" alt="Eco Girls Collective logo" fill className="object-contain" />
+            </span>
             <span>ECO GIRLS COLLECTIVE</span>
           </Link>
           <button className="md:hidden text-muted-foreground" onClick={() => setSidebarOpen(false)}>

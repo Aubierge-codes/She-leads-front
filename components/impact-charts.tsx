@@ -51,6 +51,13 @@ export function ImpactCharts() {
     return null;
   }
 
+  const totalParticipants = participantsByStatus.reduce((sum, p) => sum + p.count, 0);
+  const activeCount = participantsByStatus.find((p) => p.status === 'ACTIVE')?.count ?? 0;
+  const activePct = totalParticipants > 0 ? Math.round((activeCount / totalParticipants) * 100) : 0;
+  const radius = 54;
+  const circumference = 2 * Math.PI * radius;
+  const dashOffset = circumference * (1 - activePct / 100);
+
   const wasteData = {
     labels: wasteByType.map((w) => WASTE_TYPE_LABELS[w.type] ?? w.type),
     datasets: [
@@ -75,7 +82,32 @@ export function ImpactCharts() {
   };
 
   return (
-    <div className="grid gap-10 md:grid-cols-2">
+    <div className="grid gap-10 md:grid-cols-3">
+      <div className="flex flex-col items-center justify-center text-center">
+        <h3 className="mb-4 text-sm font-medium text-muted-foreground">Active participation rate</h3>
+        <div className="relative h-36 w-36">
+          <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
+            <circle cx="60" cy="60" r={radius} fill="none" stroke="var(--muted)" strokeWidth="12" />
+            <circle
+              cx="60"
+              cy="60"
+              r={radius}
+              fill="none"
+              stroke="var(--primary)"
+              strokeWidth="12"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              strokeDashoffset={dashOffset}
+            />
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="font-heading text-2xl font-bold text-foreground">{activePct}%</span>
+          </div>
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground">
+          {activeCount} of {totalParticipants} girls currently active
+        </p>
+      </div>
       <div>
         <h3 className="mb-4 text-sm font-medium text-muted-foreground">Waste by type</h3>
         <div className="h-[280px]">
