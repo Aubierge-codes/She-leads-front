@@ -411,19 +411,22 @@ export default function LandingPage() {
             </div>
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               <StoryCard
-                name="[Replace with participant name]"
-                affiliation="[Replace with school/community] · Example placeholder"
-                quote="Before joining the club, I knew pollution was a problem. Now I feel like I can actually do something about it."
+                name="Lois Akere"
+                affiliation="[Add school/community]"
+                quote="[Add a real quote from Lois]"
+                image="/images/story-lois-akere.png"
               />
               <StoryCard
-                name="[Replace with participant name]"
-                affiliation="[Replace with school/community]"
-                quote="[Replace with a real quote from a participant]"
+                name="Olamiposi Olukolu"
+                affiliation="[Add school/community]"
+                quote="[Add a real quote from Olamiposi]"
+                image="/images/story-olamiposi-olukolu.jpeg"
               />
               <StoryCard
-                name="[Replace with participant name]"
-                affiliation="[Replace with school/community]"
-                quote="[Replace with a real quote from a participant]"
+                name="UMURERWA Aubierge"
+                affiliation="[Add school/community]"
+                quote="[Add a real quote from Aubierge]"
+                image="/images/story-umurerwa-aubierge.png"
               />
             </div>
           </div>
