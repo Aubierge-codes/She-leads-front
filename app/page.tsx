@@ -386,7 +386,14 @@ export default function LandingPage() {
         </section>
 
         {/* Programs */}
-        <section id="programs" className="py-24 bg-muted/40">
+        <motion.section
+          id="programs"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-24 bg-muted/40"
+        >
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">What We Do</span>
@@ -400,12 +407,19 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <GirlsShowcase />
 
         {/* Our Impact */}
-        <section id="impact" className="py-24">
+        <motion.section
+          id="impact"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-24"
+        >
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Our Impact</span>
@@ -415,10 +429,17 @@ export default function LandingPage() {
             </div>
             <ImpactCharts />
           </div>
-        </section>
+        </motion.section>
 
         {/* Stories */}
-        <section id="stories" className="py-24 bg-muted/40">
+        <motion.section
+          id="stories"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-24 bg-muted/40"
+        >
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Stories</span>
@@ -447,10 +468,17 @@ export default function LandingPage() {
               />
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Reach */}
-        <section id="reach" className="py-24">
+        <motion.section
+          id="reach"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-24"
+        >
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-10">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Where We Work</span>
@@ -460,10 +488,17 @@ export default function LandingPage() {
             </div>
             <ReachSection />
           </div>
-        </section>
+        </motion.section>
 
         {/* Support */}
-        <section id="support" className="py-24 bg-primary text-primary-foreground">
+        <motion.section
+          id="support"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-24 bg-primary text-primary-foreground"
+        >
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mb-14">
               <span className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 font-medium">
@@ -504,7 +539,7 @@ export default function LandingPage() {
               </Button>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* FAQ */}
         <motion.section
