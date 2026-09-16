@@ -227,6 +227,22 @@ export default function LandingPage() {
                   </Button>
                 </Link>
               </div>
+              <div className="mt-8 grid max-w-sm grid-cols-3 gap-4">
+                <div className="border-l-2 border-primary/30 pl-3">
+                  <p className="font-heading text-xl font-bold text-foreground">80+</p>
+                  <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Girls engaged</p>
+                </div>
+                <div className="border-l-2 border-primary/30 pl-3">
+                  <p className="font-heading text-xl font-bold text-foreground">
+                    {summary ? summary.totalWasteWeightKg.toLocaleString() : '—'}kg
+                  </p>
+                  <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Waste collected</p>
+                </div>
+                <div className="border-l-2 border-primary/30 pl-3">
+                  <p className="font-heading text-xl font-bold text-foreground">3+</p>
+                  <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Schools</p>
+                </div>
+              </div>
             </motion.div>
             <div className="relative w-full max-w-55 sm:max-w-xs lg:justify-self-center lg:-translate-x-10 xl:-translate-x-16 pt-6 pb-8 px-6">
               <AfricaPhoto
