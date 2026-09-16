@@ -545,13 +545,65 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-background py-8 border-t border-border">
-        <div className="container mx-auto px-6 text-center text-muted-foreground">
-          <div className="flex items-center justify-center gap-2 mb-4 text-primary font-bold font-heading">
-            <Leaf className="w-5 h-5" />
-            <span>ECO GIRLS COLLECTIVE</span>
+      <footer className="bg-primary text-primary-foreground py-16">
+        <div className="container mx-auto px-6">
+          <div className="grid gap-10 md:grid-cols-3">
+            <div>
+              <div className="flex items-center gap-2 font-bold font-heading text-lg">
+                <Leaf className="w-5 h-5" />
+                <span>ECO GIRLS COLLECTIVE</span>
+              </div>
+              <p className="mt-3 text-sm text-primary-foreground/70 max-w-xs">
+                Nurturing grassroots climate stewardship, environmental education, and regenerative ecological
+                futures through collective community leadership and tactile action.
+              </p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/60 font-medium mb-4">
+                Quick Links
+              </p>
+              <ul className="space-y-2">
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.15em] text-primary-foreground/60 font-medium mb-4">
+                Stay Rooted
+              </p>
+              <p className="text-sm text-primary-foreground/70 mb-4">
+                Receive monthly field dispatches, seed-keeping tips, and community project spotlights.
+              </p>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  toast.info('Newsletter signup coming soon.');
+                }}
+                className="flex gap-2"
+              >
+                <input
+                  type="email"
+                  required
+                  placeholder="Your email"
+                  className="min-w-0 flex-1 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 px-4 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus-visible:border-primary-foreground/50"
+                />
+                <Button type="submit" variant="secondary" size="sm" className="rounded-full shrink-0">
+                  Subscribe
+                </Button>
+              </form>
+            </div>
           </div>
-          <p className="text-sm">© 2026 Girl in Bloom Global Ambassadors. All rights reserved.</p>
+          <div className="mt-12 pt-6 border-t border-primary-foreground/15 text-center text-sm text-primary-foreground/60">
+            © 2026 Girl in Bloom Global Ambassadors. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>
