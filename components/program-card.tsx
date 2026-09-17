@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PlaceholderImage } from '@/components/placeholder-image';
@@ -7,10 +8,19 @@ interface ProgramCardProps {
   title: string;
   description: string;
   photoLabel: string;
+  /** Path to a stand-in illustration, shown instead of the placeholder box until a real photo exists. */
+  illustrationSrc?: string;
   delay?: number;
 }
 
-export function ProgramCard({ icon: Icon, title, description, photoLabel, delay = 0 }: ProgramCardProps) {
+export function ProgramCard({
+  icon: Icon,
+  title,
+  description,
+  photoLabel,
+  illustrationSrc,
+  delay = 0,
+}: ProgramCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -19,7 +29,13 @@ export function ProgramCard({ icon: Icon, title, description, photoLabel, delay 
       transition={{ duration: 0.5, delay }}
       className="group space-y-4"
     >
-      <PlaceholderImage label={photoLabel} aspect="video" variant="sprout" />
+      {illustrationSrc ? (
+        <div className="relative aspect-video overflow-hidden rounded-lg bg-muted/60">
+          <Image src={illustrationSrc} alt="" fill className="object-contain p-4" />
+        </div>
+      ) : (
+        <PlaceholderImage label={photoLabel} aspect="video" variant="sprout" />
+      )}
       <div className="flex items-start gap-3">
         <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
           <Icon className="h-4 w-4" />
