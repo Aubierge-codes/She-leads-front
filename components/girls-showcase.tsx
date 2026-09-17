@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Leaf, Sparkles, Sprout } from 'lucide-react';
 import { PlaceholderImage } from '@/components/placeholder-image';
@@ -182,11 +183,17 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
               >
                 <div className="relative">
-                  <PlaceholderImage
-                    label={slide.photoLabel}
-                    variant={CATEGORY_VARIANTS[category]}
-                    className="rounded-2xl h-36 md:h-44"
-                  />
+                  {slide.photoSrc ? (
+                    <div className="relative h-36 md:h-44 overflow-hidden rounded-2xl bg-muted/60">
+                      <Image src={slide.photoSrc} alt="" fill className="object-contain p-4" />
+                    </div>
+                  ) : (
+                    <PlaceholderImage
+                      label={slide.photoLabel}
+                      variant={CATEGORY_VARIANTS[category]}
+                      className="rounded-2xl h-36 md:h-44"
+                    />
+                  )}
                   <div className="absolute inset-x-0 bottom-0 rounded-b-2xl bg-linear-to-t from-black/55 to-transparent px-5 py-4">
                     <p className="font-heading text-lg font-bold text-white">{slide.title}</p>
                   </div>
