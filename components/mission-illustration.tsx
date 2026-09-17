@@ -17,6 +17,8 @@ export function MissionIllustration({ className }: { className?: string }) {
           containerRef.current?.querySelector('svg')?.classList.add('animated');
         }}
         viewport={{ once: true, amount: 0.4 }}
+        animate={{ y: [0, -10, 0], rotate: [0, 1, 0, -1, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         dangerouslySetInnerHTML={{ __html: RECYCLING_SVG }}
       />
     </>
