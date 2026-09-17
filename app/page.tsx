@@ -9,8 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { WorldMapBackdrop } from '@/components/world-map-backdrop';
 import { MissionIllustration } from '@/components/mission-illustration';
-import { BlobBackdrop } from '@/components/blob-backdrop';
-import { AFRICA_PATH, AFRICA_VIEWBOX_W, AFRICA_VIEWBOX_H } from '@/components/africa-shape';
 import { GirlsShowcase } from '@/components/girls-showcase';
 import { cn } from '@/lib/utils';
 import { StatSlideshow } from '@/components/stat-slideshow';
@@ -298,14 +296,6 @@ export default function LandingPage() {
           <div className="container mx-auto px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div className="relative isolate mx-auto aspect-square w-full max-w-md">
-                <BlobBackdrop className="absolute -inset-6 -z-10" rotate={5} duration={12} />
-                <svg
-                  viewBox={`0 0 ${AFRICA_VIEWBOX_W} ${AFRICA_VIEWBOX_H}`}
-                  aria-hidden="true"
-                  className="absolute -right-6 -bottom-4 -z-10 h-28 w-28 text-primary/15"
-                >
-                  <path d={AFRICA_PATH} fill="currentColor" />
-                </svg>
                 <MissionIllustration className="absolute inset-0 [&_svg]:w-full [&_svg]:h-full" />
               </div>
               <div>
