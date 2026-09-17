@@ -7,8 +7,10 @@ import Link from 'next/link';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { AfricaPhoto } from '@/components/africa-photo';
 import { WorldMapBackdrop } from '@/components/world-map-backdrop';
+import { MissionIllustration } from '@/components/mission-illustration';
+import { BlobBackdrop } from '@/components/blob-backdrop';
+import { AFRICA_PATH, AFRICA_VIEWBOX_W, AFRICA_VIEWBOX_H } from '@/components/africa-shape';
 import { GirlsShowcase } from '@/components/girls-showcase';
 import { cn } from '@/lib/utils';
 import { StatSlideshow } from '@/components/stat-slideshow';
@@ -200,8 +202,8 @@ export default function LandingPage() {
         {/* Hero */}
         <section className="relative isolate overflow-hidden pb-20 md:pb-28">
           <WorldMapBackdrop className="pointer-events-none absolute inset-0 -z-20 h-full w-full" />
-          <div className="container mx-auto px-6 pt-32 grid gap-12 lg:grid-cols-2 lg:items-center">
-            <motion.div initial="initial" animate="animate" variants={fadeIn}>
+          <div className="container mx-auto px-6 pt-32">
+            <motion.div initial="initial" animate="animate" variants={fadeIn} className="max-w-2xl">
               <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">
                 Girl in Bloom Global Ambassadors 2026
               </span>
@@ -245,47 +247,6 @@ export default function LandingPage() {
                 </div>
               </div>
             </motion.div>
-            <div className="relative w-full max-w-55 sm:max-w-xs lg:justify-self-center lg:-translate-x-10 xl:-translate-x-16 pt-6 pb-8 px-6">
-              <AfricaPhoto
-                src="/images/hero-girls-circle.jpg"
-                alt="Hands planting a seedling in the soil"
-                srcWidth={735}
-                srcHeight={490}
-                className="relative w-full"
-              />
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="absolute -left-2 top-2 sm:-left-6 sm:top-8 flex items-center gap-3 rounded-xl border border-border bg-card shadow-md px-4 py-3"
-              >
-                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary shrink-0">
-                  <Users className="w-4 h-4" />
-                </span>
-                <div className="leading-tight">
-                  <p className="font-heading font-bold text-foreground">{summary?.participantsCount ?? '—'}+</p>
-                  <p className="text-xs text-muted-foreground whitespace-nowrap">Girls engaged</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="absolute -right-2 bottom-0 sm:-right-6 sm:bottom-6 flex items-center gap-3 rounded-xl border border-border bg-card shadow-md px-4 py-3"
-              >
-                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-secondary/15 text-secondary shrink-0">
-                  <Recycle className="w-4 h-4" />
-                </span>
-                <div className="leading-tight">
-                  <p className="font-heading font-bold text-foreground">
-                    {summary ? summary.totalWasteWeightKg.toLocaleString() : '—'} kg
-                  </p>
-                  <p className="text-xs text-muted-foreground whitespace-nowrap">Waste collected</p>
-                </div>
-              </motion.div>
-            </div>
           </div>
         </section>
 
@@ -313,13 +274,16 @@ export default function LandingPage() {
         <section id="mission" className="py-24">
           <div className="container mx-auto px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-              <div className="relative aspect-21/9 w-full overflow-hidden rounded-2xl bg-white">
-                <Image
-                  src="/images/mission-cleanup-illustration.jpg"
-                  alt="Illustration of children cleaning up litter by a stream"
-                  fill
-                  className="object-contain"
-                />
+              <div className="relative isolate mx-auto aspect-square w-full max-w-md">
+                <BlobBackdrop className="absolute -inset-6 -z-10" rotate={5} duration={12} />
+                <svg
+                  viewBox={`0 0 ${AFRICA_VIEWBOX_W} ${AFRICA_VIEWBOX_H}`}
+                  aria-hidden="true"
+                  className="absolute -right-6 -bottom-4 -z-10 h-28 w-28 text-primary/15"
+                >
+                  <path d={AFRICA_PATH} fill="currentColor" />
+                </svg>
+                <MissionIllustration className="absolute inset-0 [&_svg]:w-full [&_svg]:h-full" />
               </div>
               <div>
                 <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium">Our Mission</span>
@@ -402,8 +366,8 @@ export default function LandingPage() {
               </h2>
             </div>
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-              {PROGRAMS.map((program) => (
-                <ProgramCard key={program.title} {...program} />
+              {PROGRAMS.map((program, i) => (
+                <ProgramCard key={program.title} {...program} delay={(i % 3) * 0.1} />
               ))}
             </div>
           </div>
@@ -453,18 +417,21 @@ export default function LandingPage() {
                 affiliation="[Add school/community]"
                 quote="[Add a real quote from Lois]"
                 image="/images/story-lois-akere.png"
+                delay={0}
               />
               <StoryCard
                 name="Olamiposi Olukolu"
                 affiliation="[Add school/community]"
                 quote="[Add a real quote from Olamiposi]"
                 image="/images/story-olamiposi-olukolu.jpeg"
+                delay={0.1}
               />
               <StoryCard
                 name="UMURERWA Aubierge"
                 affiliation="[Add school/community]"
                 quote="[Add a real quote from Aubierge]"
                 image="/images/story-umurerwa-aubierge.png"
+                delay={0.2}
               />
             </div>
           </div>
