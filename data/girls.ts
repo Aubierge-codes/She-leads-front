@@ -16,6 +16,8 @@ export interface GirlStory {
   category: GirlCategory;
   /** Caption for the PlaceholderImage until a real photo is added. */
   photoLabel: string;
+  /** Stand-in illustration shown instead of the placeholder box until a real photo exists. */
+  photoSrc?: string;
   title: string;
   description: string;
 }
@@ -25,6 +27,7 @@ export const girlsData: GirlStory[] = [
     id: 1,
     category: 'school',
     photoLabel: 'Add photo: environmental club meeting',
+    photoSrc: '/images/illustrations/meeting.svg',
     title: 'Leading the school environmental club',
     description: '[Add a real story about this activity]',
   },
@@ -32,6 +35,7 @@ export const girlsData: GirlStory[] = [
     id: 2,
     category: 'school',
     photoLabel: 'Add photo: classroom climate lesson',
+    photoSrc: '/images/illustrations/teaching.svg',
     title: 'Classroom climate education',
     description: '[Add a real story about this activity]',
   },
@@ -39,6 +43,7 @@ export const girlsData: GirlStory[] = [
     id: 3,
     category: 'school',
     photoLabel: 'Add photo: leadership workshop',
+    photoSrc: '/images/illustrations/presentation.svg',
     title: 'Leadership skills workshop',
     description: '[Add a real story about this activity]',
   },
@@ -46,6 +51,7 @@ export const girlsData: GirlStory[] = [
     id: 4,
     category: 'community',
     photoLabel: 'Add photo: community outreach day',
+    photoSrc: '/images/illustrations/high-five.svg',
     title: 'Community awareness outreach',
     description: '[Add a real story about this activity]',
   },
@@ -53,6 +59,7 @@ export const girlsData: GirlStory[] = [
     id: 5,
     category: 'community',
     photoLabel: 'Add photo: working with local leaders',
+    photoSrc: '/images/illustrations/collaborators.svg',
     title: 'Partnering with community members',
     description: '[Add a real story about this activity]',
   },
@@ -60,6 +67,7 @@ export const girlsData: GirlStory[] = [
     id: 6,
     category: 'community',
     photoLabel: 'Add photo: local initiative launch',
+    photoSrc: '/images/illustrations/well-done.svg',
     title: 'Launching a local initiative',
     description: '[Add a real story about this activity]',
   },
@@ -67,6 +75,7 @@ export const girlsData: GirlStory[] = [
     id: 7,
     category: 'environment',
     photoLabel: 'Add photo: tree planting day',
+    photoSrc: '/images/illustrations/gardening.svg',
     title: 'Tree planting day',
     description: '[Add a real story about this activity]',
   },
