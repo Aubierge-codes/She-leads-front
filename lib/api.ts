@@ -23,6 +23,7 @@ export type MeetingFrequency = 'WEEKLY' | 'BIWEEKLY' | 'MONTHLY';
 export type ReportStatus = 'DRAFT' | 'SUBMITTED' | 'APPROVED' | 'REJECTED';
 export type DonationFrequency = 'ONE_TIME' | 'MONTHLY';
 export type DonationStatus = 'PENDING' | 'COMPLETED' | 'FAILED' | 'REFUNDED';
+export type PartnershipInquiryStatus = 'NEW' | 'CONTACTED' | 'CLOSED';
 
 // ---------- Entities ----------
 
@@ -179,6 +180,23 @@ export interface DonationStats {
   refundedCount: number;
 }
 
+export interface NewsletterSubscriber {
+  id: string;
+  email: string;
+  createdAt: string;
+}
+
+export interface PartnershipInquiry {
+  id: string;
+  organizationName: string;
+  contactName: string;
+  email: string;
+  phone?: string | null;
+  message?: string | null;
+  status: PartnershipInquiryStatus;
+  createdAt: string;
+}
+
 // ---------- API modules ----------
 
 export const communitiesApi = {
@@ -287,5 +305,20 @@ export const donationsApi = {
   }) => api.post<Donation>('/donations', data).then((r) => r.data),
   updateStatus: (id: string, status: DonationStatus) =>
     api.patch<Donation>(`/donations/${id}/status`, { status }).then((r) => r.data),
+};
+
+export const newsletterApi = {
+  subscribe: (email: string) =>
+    api.post<NewsletterSubscriber>('/newsletter', { email }).then((r) => r.data),
+  list: () => api.get<NewsletterSubscriber[]>('/newsletter').then((r) => r.data),
+};
+
+export const partnershipsApi = {
+  list: () => api.get<PartnershipInquiry[]>('/partnerships').then((r) => r.data),
+  get: (id: string) => api.get<PartnershipInquiry>(`/partnerships/${id}`).then((r) => r.data),
+  create: (data: { organizationName: string; contactName: string; email: string; phone?: string; message?: string }) =>
+    api.post<PartnershipInquiry>('/partnerships', data).then((r) => r.data),
+  updateStatus: (id: string, status: PartnershipInquiryStatus) =>
+    api.patch<PartnershipInquiry>(`/partnerships/${id}/status`, { status }).then((r) => r.data),
 };
 
