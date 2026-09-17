@@ -38,8 +38,10 @@ import {
   UserPlus,
   Menu,
   X,
+  Loader2,
 } from 'lucide-react';
-import { dashboardApi, type DashboardSummary } from '@/lib/api';
+import { dashboardApi, newsletterApi, apiErrorMessage, type DashboardSummary } from '@/lib/api';
+import { PartnershipModal } from '@/components/partnership-modal';
 
 const NAV_LINKS = [
   { label: 'About', href: '#mission' },
@@ -55,6 +57,7 @@ const PROGRAMS = [
     title: 'Environmental Clubs',
     description: 'Supporting girls to create and lead environmental clubs in schools.',
     photoLabel: 'Add photo: environmental club meeting',
+    illustrationSrc: '/images/illustrations/team-collaboration.svg',
   },
   {
     icon: Recycle,
@@ -67,18 +70,21 @@ const PROGRAMS = [
     title: 'Environmental Education',
     description: 'Helping girls understand climate, waste, sustainability and environmental responsibility.',
     photoLabel: 'Add photo: education session',
+    illustrationSrc: '/images/illustrations/teaching.svg',
   },
   {
     icon: Users,
     title: "Girls' Leadership",
     description: 'Building confidence, leadership, teamwork and problem-solving skills.',
     photoLabel: 'Add photo: girls leading a session',
+    illustrationSrc: '/images/illustrations/presentation.svg',
   },
   {
     icon: Target,
     title: 'Community Action',
     description: 'Turning ideas into projects that respond to local environmental challenges.',
     photoLabel: 'Add photo: community project in progress',
+    illustrationSrc: '/images/illustrations/collaboration.svg',
   },
   {
     icon: Trash2,
@@ -100,6 +106,9 @@ export default function LandingPage() {
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [partnershipModalOpen, setPartnershipModalOpen] = useState(false);
 
   useEffect(() => {
     dashboardApi.summary().then(setSummary).catch(() => {});
@@ -111,6 +120,20 @@ export default function LandingPage() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterSubmitting(true);
+    try {
+      await newsletterApi.subscribe(newsletterEmail);
+      toast.success("You're subscribed — thanks for staying rooted with us.");
+      setNewsletterEmail('');
+    } catch (error) {
+      toast.error(apiErrorMessage(error, 'Could not subscribe right now'));
+    } finally {
+      setNewsletterSubmitting(false);
+    }
+  };
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -500,7 +523,7 @@ export default function LandingPage() {
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-                onClick={() => toast.info('Partnership inquiries form coming soon — reach out and we will follow up.')}
+                onClick={() => setPartnershipModalOpen(true)}
               >
                 Become a Partner
               </Button>
@@ -584,21 +607,23 @@ export default function LandingPage() {
               <p className="text-sm text-primary-foreground/70 mb-4">
                 Receive monthly field dispatches, seed-keeping tips, and community project spotlights.
               </p>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  toast.info('Newsletter signup coming soon.');
-                }}
-                className="flex gap-2"
-              >
+              <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
                 <input
                   type="email"
                   required
                   placeholder="Your email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   className="min-w-0 flex-1 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 px-4 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus-visible:border-primary-foreground/50"
                 />
-                <Button type="submit" variant="secondary" size="sm" className="rounded-full shrink-0">
-                  Subscribe
+                <Button
+                  type="submit"
+                  variant="secondary"
+                  size="sm"
+                  className="rounded-full shrink-0"
+                  disabled={newsletterSubmitting}
+                >
+                  {newsletterSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Subscribe'}
                 </Button>
               </form>
             </div>
@@ -608,6 +633,8 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      <PartnershipModal open={partnershipModalOpen} onClose={() => setPartnershipModalOpen(false)} />
     </div>
   );
 }
