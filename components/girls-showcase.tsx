@@ -139,7 +139,7 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Eco Girls Collective brings girls together through school-based learning, community engagement, and
-            environmental action — 80 girls making an impact across every part of the program.
+            environmental action: 80 girls making an impact across every part of the program.
           </p>
         </div>
 
@@ -240,7 +240,7 @@ export function GirlsShowcase({ girls = girlsData }: GirlsShowcaseProps) {
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
               >
                 <span className="text-xs uppercase tracking-wide text-muted-foreground">
-                  {String(index + 1).padStart(2, '0')} — {slides.length} {CATEGORY_LABELS[category]} stories
+                  {String(index + 1).padStart(2, '0')} of {slides.length} {CATEGORY_LABELS[category]} stories
                 </span>
                 <h3 className="font-heading mt-2 text-xl font-bold text-foreground">{slide.title}</h3>
                 {slide.name && <p className="mt-1 text-sm text-primary font-medium">{slide.name}</p>}
