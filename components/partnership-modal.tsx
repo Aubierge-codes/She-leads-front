@@ -34,7 +34,7 @@ export function PartnershipModal({ open, onClose }: PartnershipModalProps) {
         phone: phone || undefined,
         message: message || undefined,
       });
-      toast.success("Thanks for reaching out — we'll follow up soon.");
+      toast.success("Thanks for reaching out. We'll follow up soon.");
       setOrganizationName('');
       setContactName('');
       setEmail('');
