@@ -124,7 +124,7 @@ export default function LandingPage() {
     setNewsletterSubmitting(true);
     try {
       await newsletterApi.subscribe(newsletterEmail);
-      toast.success("You're subscribed — thanks for staying rooted with us.");
+      toast.success("You're subscribed. Thanks for staying rooted with us.");
       setNewsletterEmail('');
     } catch (error) {
       toast.error(apiErrorMessage(error, 'Could not subscribe right now'));
@@ -305,7 +305,7 @@ export default function LandingPage() {
                 </h2>
                 <p className="mt-4 text-muted-foreground max-w-xl">
                   Eco Girls Collective creates opportunities for girls to learn about environmental challenges,
-                  develop leadership skills, work together, and take action in their communities — turning
+                  develop leadership skills, work together, and take action in their communities, turning
                   awareness into practical, measurable change.
                 </p>
               </div>
@@ -541,7 +541,7 @@ export default function LandingPage() {
                 {
                   question: 'How does a secondary school start an Eco Girls chapter?',
                   answer:
-                    'Reach out through the Get Involved section below — our team works with school staff and student leaders to set up an environmental club and connect it with the wider network.',
+                    'Reach out through the Get Involved section below. Our team works with school staff and student leaders to set up an environmental club and connect it with the wider network.',
                 },
                 {
                   question: 'Where do collected materials go after cleanups?',
@@ -551,7 +551,7 @@ export default function LandingPage() {
                 {
                   question: 'How can corporate partners or NGOs get involved?',
                   answer:
-                    'Organizations can partner on funding, supplies, or joint programs — see the Partner option in Get Involved, or reach out directly and our team will follow up.',
+                    'Organizations can partner on funding, supplies, or joint programs. See the Partner option in Get Involved, or reach out directly and our team will follow up.',
                 },
               ]}
             />
