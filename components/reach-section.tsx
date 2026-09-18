@@ -54,7 +54,7 @@ export function ReachSection() {
         )}
       </div>
       <p className="text-xs uppercase tracking-wide text-muted-foreground">
-        Illustrative overview — not a geographic map.
+        Illustrative overview, not a geographic map.
       </p>
     </div>
   );
