@@ -1,8 +1,31 @@
 import axios from 'axios';
+import { getToken, clearSession, type AuthUser } from './auth';
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000',
 });
+
+api.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (axios.isAxiosError(error) && error.response?.status === 401 && typeof window !== 'undefined') {
+      const onLoginPage = window.location.pathname === '/login';
+      clearSession();
+      if (!onLoginPage && window.location.pathname.startsWith('/dashboard')) {
+        window.location.href = '/login';
+      }
+    }
+    return Promise.reject(error);
+  },
+);
 
 export function apiErrorMessage(error: unknown, fallback = 'Something went wrong'): string {
   if (axios.isAxiosError(error)) {
@@ -320,5 +343,10 @@ export const partnershipsApi = {
     api.post<PartnershipInquiry>('/partnerships', data).then((r) => r.data),
   updateStatus: (id: string, status: PartnershipInquiryStatus) =>
     api.patch<PartnershipInquiry>(`/partnerships/${id}/status`, { status }).then((r) => r.data),
+};
+
+export const authApi = {
+  login: (email: string, password: string) =>
+    api.post<{ accessToken: string; user: AuthUser }>('/auth/login', { email, password }).then((r) => r.data),
 };
 
