@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   Users,
@@ -18,8 +18,10 @@ import {
   Settings,
   Menu,
   X,
+  LogOut,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getToken, getUser, clearSession, type AuthUser } from '@/lib/auth';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -37,7 +39,25 @@ const navigation = [
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [user] = useState<AuthUser | null>(() => getUser());
+  const [hasToken] = useState<boolean>(() => !!getToken());
+
+  useEffect(() => {
+    if (!hasToken) {
+      router.replace('/login');
+    }
+  }, [hasToken, router]);
+
+  const handleLogout = () => {
+    clearSession();
+    router.replace('/login');
+  };
+
+  if (!hasToken) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-muted/30 flex">
@@ -93,7 +113,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Menu className="h-6 w-6" />
           </button>
           <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 justify-end items-center">
-            <p className="text-sm text-muted-foreground hidden sm:block">Open access</p>
+            {user && (
+              <p className="text-sm text-muted-foreground hidden sm:block">
+                {user.name} <span className="text-muted-foreground/60">({user.role})</span>
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
           </div>
         </header>
 
