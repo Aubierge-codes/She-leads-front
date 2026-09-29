@@ -41,7 +41,6 @@ export default function ParticipantsPage() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
   const load = () => {
-    setIsLoading(true);
     Promise.all([participantsApi.list(), schoolsApi.list(), communitiesApi.list()])
       .then(([p, s, c]) => {
         setParticipants(p);
