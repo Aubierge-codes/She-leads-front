@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import { GraduationCap, Loader2, MapPin } from 'lucide-react';
-import { communitiesApi, schoolsApi, type Community, type School } from '@/lib/api';
+import { publicApi, type PublicReach } from '@/lib/api';
 
 export function ReachSection() {
-  const [schools, setSchools] = useState<School[]>([]);
-  const [communities, setCommunities] = useState<Community[]>([]);
+  const [schools, setSchools] = useState<PublicReach['schools']>([]);
+  const [communities, setCommunities] = useState<PublicReach['communities']>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([schoolsApi.list(), communitiesApi.list()])
-      .then(([s, c]) => {
-        setSchools(s);
-        setCommunities(c);
+    publicApi
+      .reach()
+      .then((reach) => {
+        setSchools(reach.schools);
+        setCommunities(reach.communities);
       })
       .catch(() => {})
       .finally(() => setIsLoading(false));
