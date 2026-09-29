@@ -24,7 +24,6 @@ export default function CommunitiesPage() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
   const load = () => {
-    setIsLoading(true);
     communitiesApi
       .list()
       .then(setCommunities)
