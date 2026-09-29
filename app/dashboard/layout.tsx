@@ -15,13 +15,16 @@ import {
   Leaf,
   BarChart,
   HeartHandshake,
+  Handshake,
+  Mail,
   Settings,
   Menu,
   X,
   LogOut,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getToken, getUser, clearSession, type AuthUser } from '@/lib/auth';
+import { clearSession } from '@/lib/auth';
+import { useSession } from '@/lib/use-session';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -34,6 +37,8 @@ const navigation = [
   { name: 'Env Clubs', href: '/dashboard/clubs', icon: Leaf },
   { name: 'Reports', href: '/dashboard/reports', icon: BarChart },
   { name: 'Donations', href: '/dashboard/donations', icon: HeartHandshake },
+  { name: 'Partnerships', href: '/dashboard/partnerships', icon: Handshake },
+  { name: 'Newsletter', href: '/dashboard/newsletter', icon: Mail },
   { name: 'Settings', href: '/dashboard/settings', icon: Settings },
 ];
 
@@ -41,21 +46,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [user] = useState<AuthUser | null>(() => getUser());
-  const [hasToken] = useState<boolean>(() => !!getToken());
+  const { hydrated, token, user } = useSession();
 
   useEffect(() => {
-    if (!hasToken) {
+    if (hydrated && !token) {
       router.replace('/login');
     }
-  }, [hasToken, router]);
+  }, [hydrated, token, router]);
 
   const handleLogout = () => {
     clearSession();
     router.replace('/login');
   };
 
-  if (!hasToken) {
+  // Server output and the first client render are both "nothing yet", so they match.
+  if (!hydrated || !token) {
     return null;
   }
 
