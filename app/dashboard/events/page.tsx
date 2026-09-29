@@ -57,7 +57,6 @@ export default function EventsPage() {
   const [isSavingWaste, setIsSavingWaste] = useState(false);
 
   const load = () => {
-    setIsLoading(true);
     Promise.all([cleanupApi.list(), communitiesApi.list(), participantsApi.list()])
       .then(([e, c, p]) => {
         setEvents(e);
