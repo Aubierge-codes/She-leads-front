@@ -42,7 +42,6 @@ export default function ReportsPage() {
   const [isSaving, setIsSaving] = useState(false);
 
   const load = () => {
-    setIsLoading(true);
     Promise.all([reportsApi.list(), schoolsApi.list()])
       .then(([r, s]) => {
         setReports(r);
