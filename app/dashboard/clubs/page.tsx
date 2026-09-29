@@ -30,7 +30,6 @@ export default function EnvClubsPage() {
   const [isSaving, setIsSaving] = useState(false);
 
   const load = () => {
-    setIsLoading(true);
     Promise.all([clubsApi.list(), schoolsApi.list()])
       .then(([c, s]) => {
         setClubs(c);
