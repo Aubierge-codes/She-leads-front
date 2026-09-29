@@ -24,12 +24,22 @@ export function getUser(): AuthUser | null {
   }
 }
 
+// localStorage changes do not fire "storage" in the tab that made them, so
+// same-tab changes announce themselves with this custom event.
+export const SESSION_CHANGE_EVENT = 'egc-auth-change';
+
+function announceSessionChange() {
+  window.dispatchEvent(new Event(SESSION_CHANGE_EVENT));
+}
+
 export function setSession(token: string, user: AuthUser) {
   window.localStorage.setItem(TOKEN_KEY, token);
   window.localStorage.setItem(USER_KEY, JSON.stringify(user));
+  announceSessionChange();
 }
 
 export function clearSession() {
   window.localStorage.removeItem(TOKEN_KEY);
   window.localStorage.removeItem(USER_KEY);
+  announceSessionChange();
 }
