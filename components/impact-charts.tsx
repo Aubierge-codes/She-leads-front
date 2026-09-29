@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2';
-import { analyticsApi } from '@/lib/api';
+import { publicApi } from '@/lib/api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
@@ -38,10 +38,11 @@ export function ImpactCharts() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([analyticsApi.wasteByType(), analyticsApi.participantsByStatus()])
-      .then(([waste, participants]) => {
-        setWasteByType(waste);
-        setParticipantsByStatus(participants);
+    publicApi
+      .impact()
+      .then((impact) => {
+        setWasteByType(impact.wasteByType);
+        setParticipantsByStatus(impact.participantsByStatus);
       })
       .catch(() => {})
       .finally(() => setIsLoading(false));
