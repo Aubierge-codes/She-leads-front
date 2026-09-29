@@ -31,7 +31,6 @@ export default function DonationsPage() {
   const [isSaving, setIsSaving] = useState(false);
 
   const load = () => {
-    setIsLoading(true);
     Promise.all([donationsApi.list(), donationsApi.stats()])
       .then(([list, s]) => {
         setDonations(list);
