@@ -47,6 +47,7 @@ export type ReportStatus = 'DRAFT' | 'SUBMITTED' | 'APPROVED' | 'REJECTED';
 export type DonationFrequency = 'ONE_TIME' | 'MONTHLY';
 export type DonationStatus = 'PENDING' | 'COMPLETED' | 'FAILED' | 'REFUNDED';
 export type PartnershipInquiryStatus = 'NEW' | 'CONTACTED' | 'CLOSED';
+export type Role = 'ADMIN' | 'MANAGER';
 
 // ---------- Entities ----------
 
@@ -203,6 +204,32 @@ export interface DonationStats {
   refundedCount: number;
 }
 
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: Role;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface PublicSummary {
+  participantsCount: number;
+  schoolsCount: number;
+  communitiesCount: number;
+  totalWasteWeightKg: number;
+}
+
+export interface PublicReach {
+  communities: { id: string; name: string; state: string }[];
+  schools: { id: string; name: string }[];
+}
+
+export interface PublicImpact {
+  wasteByType: { type: WasteType; totalWeightKg: number; totalBags: number }[];
+  participantsByStatus: { status: ParticipantStatus; count: number }[];
+}
+
 export interface NewsletterSubscriber {
   id: string;
   email: string;
@@ -348,5 +375,21 @@ export const partnershipsApi = {
 export const authApi = {
   login: (email: string, password: string) =>
     api.post<{ accessToken: string; user: AuthUser }>('/auth/login', { email, password }).then((r) => r.data),
+  changePassword: (currentPassword: string, newPassword: string) =>
+    api.patch<{ success: boolean }>('/auth/password', { currentPassword, newPassword }).then((r) => r.data),
+};
+
+export const usersApi = {
+  list: () => api.get<User[]>('/users').then((r) => r.data),
+  create: (data: { name: string; email: string; password: string; role: Role }) =>
+    api.post<User>('/users', data).then((r) => r.data),
+  remove: (id: string) => api.delete(`/users/${id}`).then((r) => r.data),
+};
+
+// Unauthenticated, trimmed data for the public marketing site.
+export const publicApi = {
+  summary: () => api.get<PublicSummary>('/public/summary').then((r) => r.data),
+  reach: () => api.get<PublicReach>('/public/reach').then((r) => r.data),
+  impact: () => api.get<PublicImpact>('/public/impact').then((r) => r.data),
 };
 
