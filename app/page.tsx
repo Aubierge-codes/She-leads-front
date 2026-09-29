@@ -38,7 +38,7 @@ import {
   X,
   Loader2,
 } from 'lucide-react';
-import { dashboardApi, newsletterApi, apiErrorMessage, type DashboardSummary } from '@/lib/api';
+import { publicApi, newsletterApi, apiErrorMessage, type PublicSummary } from '@/lib/api';
 import { PartnershipModal } from '@/components/partnership-modal';
 
 const NAV_LINKS = [
@@ -101,7 +101,7 @@ const WAYS_TO_PARTICIPATE = [
 ];
 
 export default function LandingPage() {
-  const [summary, setSummary] = useState<DashboardSummary | null>(null);
+  const [summary, setSummary] = useState<PublicSummary | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -109,7 +109,7 @@ export default function LandingPage() {
   const [partnershipModalOpen, setPartnershipModalOpen] = useState(false);
 
   useEffect(() => {
-    dashboardApi.summary().then(setSummary).catch(() => {});
+    publicApi.summary().then(setSummary).catch(() => {});
   }, []);
 
   useEffect(() => {
