@@ -34,7 +34,6 @@ export default function InventoryPage() {
   const [isSavingTxn, setIsSavingTxn] = useState(false);
 
   const load = () => {
-    setIsLoading(true);
     inventoryApi
       .list()
       .then(setItems)
