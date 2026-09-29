@@ -25,7 +25,6 @@ export default function SchoolsPage() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
   const load = () => {
-    setIsLoading(true);
     Promise.all([schoolsApi.list(), communitiesApi.list()])
       .then(([s, c]) => {
         setSchools(s);
